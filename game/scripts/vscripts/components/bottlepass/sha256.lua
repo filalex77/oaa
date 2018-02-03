@@ -48,14 +48,14 @@ local function band(a, b, c, ...)
         a = a % MOD
         b = b % MOD
         z = ((a + b) - bxor1(a,b)) / 2
-        if c then z = bit32_band(z, c, ...) end
+        if c then z = bit32.band(z, c, ...) end
         return z
     elseif a then return a % MOD
     else return MODM end
 end
 local function bnot(x) return (-1 - x) % MOD end
 local function rshift1(a, disp)
-    if disp < 0 then return lshift(a,-disp) end
+    if disp < 0 then return bit32.lshift(a,-disp) end
     return math.floor(a % 2 ^ 32 / 2 ^ disp)
 end
 local function rshift(x, disp)
